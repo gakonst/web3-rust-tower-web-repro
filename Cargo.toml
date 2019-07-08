@@ -1,0 +1,16 @@
+[package]
+name = "test-crate"
+version = "0.1.0"
+authors = ["Georgios Konstantopoulos <me@gakonst.com>"]
+edition = "2018"
+
+[dependencies]
+tower-web = "0.3.7"
+futures = "0.1.28"
+hyper = "0.12.31"
+parking_lot = "0.8.0"
+reqwest = "0.9.18"
+url = "1.7.2"
+tokio-executor = "0.1.8"
+web3 = { git = "https://github.com/tomusdrw/rust-web3"  }
+tokio = "0.1.22"
