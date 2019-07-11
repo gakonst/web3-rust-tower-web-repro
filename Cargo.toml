@@ -14,3 +14,4 @@ url = "1.7.2"
 tokio-executor = "0.1.8"
 web3 = { git = "https://github.com/tomusdrw/rust-web3"  }
 tokio = "0.1.22"
+env_logger = "0.6.2"

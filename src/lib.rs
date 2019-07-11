@@ -38,7 +38,11 @@ impl_web! {
         }
 
         fn bar(&self) -> Box<dyn Future<Item = (), Error = ()> + Send> {
-            let (_eloop, transport) = Http::new(&self.endpoint).unwrap();
+            let (eloop, transport) = Http::new(&self.endpoint).unwrap();
+            // Run event loop in the background.
+            println!("Converting to remote...");
+            eloop.into_remote();
+            println!("Converted");
             let web3 = Web3::new(transport);
             Box::new(
                 web3.eth()
@@ -85,6 +89,7 @@ mod tests {
 
     #[test]
     fn wait_works() {
+        let _ = env_logger::try_init();
         let s = MyStruct {
             address: Address::from_str("3cdb3d9e1b74692bb1e3bb5fc81938151ca64b02").unwrap(),
             endpoint: "http://127.0.0.1:8545".to_string(),
